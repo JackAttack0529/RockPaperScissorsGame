@@ -19,9 +19,15 @@ struct ContentView: View {
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
                     .multilineTextAlignment(.center)
+                Spacer()
                 
                 Text("Select Rock, Paper, Or Scissors to start the game")
+                    .foregroundColor(Color.white)
+                    .font(.title)
+                    .multilineTextAlignment(.center)
+                Spacer()
                 HStack{
+                    Spacer()
                     Button{
                         print("Button clicked!")
                     } label: {
@@ -30,24 +36,27 @@ struct ContentView: View {
                         Text("🪨")
                             .font(.system(size:75))
                     }
-                    
+                    Spacer()
                     Button{
                         print("Button clicked!")
                     } label: {
                         Text("📄")
                             .font(.system(size:75))
                     }
-                    
+                    Spacer()
                     Button{
                         print("Button clicked!")
                     } label: {
                         Text("✂️")
                             .font(.system(size:75))
                     }
+                    
+                    Spacer()
                         
                 }
-                
+                Spacer()
                 HStack{
+                    Spacer()
                     VStack{
                         Text("🪨")
                             .font(.system(size:60))
@@ -56,11 +65,12 @@ struct ContentView: View {
                             .font(.title)
                             .foregroundColor(Color.white)
                             .padding(.bottom, 10.0)
-                        
                         Text("0")
                             .font(.title)
                             .foregroundColor(Color.white)
                     }
+                    
+                    Spacer()
                     
                     VStack{
                         Text("🪨")
@@ -74,6 +84,7 @@ struct ContentView: View {
                             .font(.title)
                             .foregroundColor(Color.white)
                     }
+                    Spacer()
                 }
                     
                     Button{
