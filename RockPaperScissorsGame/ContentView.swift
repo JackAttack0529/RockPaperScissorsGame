@@ -7,7 +7,19 @@
 
 import SwiftUI
 
+
+
 struct ContentView: View {
+    @State var playerScore = 0
+    @State var cpuScore = 0
+    @State var rockValue = 1
+    @State var paperValue = 2
+    @State var scissorsValue = 3
+    @State var playerNumber = 0
+    @State var playerImage = 1
+    @State var cpuImage = 1
+    @State var EmojiP = "🪨"
+    @State var EmojiC = "🪨"
     var body: some View {
         ZStack{
             // Using "ignoreSafeArea" allows for the background color to take up the entire screen
@@ -29,26 +41,91 @@ struct ContentView: View {
                 HStack{
                     Spacer()
                     Button{
-                        print("Button clicked!")
+                        let playerNumber = 1
+                        let cpuRandom = Int.random(in: 1...3)
+                        if (playerNumber == 1 && cpuRandom != 1 && cpuRandom != 2 && cpuRandom == 3){
+                            playerScore = playerScore + 1
+                        } else if (cpuRandom == 2 && cpuRandom != 1 && cpuRandom != 3){
+                            cpuScore = cpuScore + 1
+                        } else if (cpuRandom == playerNumber){
+                            cpuScore = cpuScore + 0
+                            playerScore = playerScore + 0
+                        }
+                        
+                        if (playerNumber == 1){
+                            EmojiP = "🪨"
+                        }
+                        
+                        if (cpuRandom == rockValue){
+                            EmojiC = "🪨"
+                        } else if (cpuRandom == paperValue){
+                            EmojiC = "📄"
+                        } else if (cpuRandom == scissorsValue){
+                            EmojiC = "✂️"
+                        }
                     } label: {
                         
                         // Using .system(size: Int) allows for a custom size to be set for an element/view
                         Text("🪨")
                             .font(.system(size:75))
+                        
                     }
                     Spacer()
                     Button{
-                        print("Button clicked!")
+                        let playerNumber = 2
+                        let cpuRandom = Int.random(in: 1...3)
+                        if (playerNumber == 2 && cpuRandom != 3 && cpuRandom == 1){
+                            playerScore = playerScore + 1
+                        } else if (cpuRandom == 3 && cpuRandom != 1 && cpuRandom != 2 && cpuRandom == 3){
+                            cpuScore = cpuScore + 1
+                        } else if (cpuRandom == playerNumber){
+                            cpuScore = cpuScore + 0
+                            playerScore = playerScore + 0
+                        }
+                        if (playerNumber == 2){
+                            EmojiP = "📄"
+                        }
+                        
+                        if (cpuRandom == rockValue){
+                            EmojiC = "🪨"
+                        }else if (cpuRandom == paperValue){
+                            EmojiC = "📄"
+                        }else if (cpuRandom == scissorsValue){
+                            EmojiC = "✂️"
+                        }
+                        
                     } label: {
                         Text("📄")
                             .font(.system(size:75))
+//                        let cpuRandom = Int.random(in: 1...3)
                     }
                     Spacer()
                     Button{
-                        print("Button clicked!")
+                        let playerNumber = 3
+                        let cpuRandom = Int.random(in: 1...3)
+                        if (playerNumber == 3 && cpuRandom != 1 && cpuRandom != 3){
+                            playerScore = playerScore + 1
+                        } else if (cpuRandom == 1 && cpuRandom != 2 && cpuRandom != 3){
+                            cpuScore = cpuScore + 1
+                        } else if (cpuRandom == playerNumber){
+                            cpuScore = cpuScore + 0
+                            playerScore = playerScore + 0
+                        }
+                        if (playerNumber == 3){
+                            EmojiP = "✂️"
+                        }
+                        
+                        if (cpuRandom == rockValue){
+                            EmojiC = "🪨"
+                        } else if (cpuRandom == paperValue){
+                            EmojiC = "📄"
+                        } else if (cpuRandom == scissorsValue){
+                            EmojiC = "✂️"
+                        }
                     } label: {
                         Text("✂️")
                             .font(.system(size:75))
+//                        let cpuRandom = Int.random(in: 1...3)
                     }
                     
                     Spacer()
@@ -58,14 +135,15 @@ struct ContentView: View {
                 HStack{
                     Spacer()
                     VStack{
-                        Text("🪨")
+                        
+                        Text(EmojiP)
                             .font(.system(size:60))
                             .padding(.bottom, 10.0)
                         Text("Player")
                             .font(.title)
                             .foregroundColor(Color.white)
                             .padding(.bottom, 10.0)
-                        Text("0")
+                        Text(String(playerScore))
                             .font(.title)
                             .foregroundColor(Color.white)
                     }
@@ -73,14 +151,14 @@ struct ContentView: View {
                     Spacer()
                     
                     VStack{
-                        Text("🪨")
+                        Text(EmojiC)
                             .font(.system(size:60))
                             .padding(.bottom, 10.0)
                         Text("CPU")
                             .font(.title)
                             .foregroundColor(Color.white)
                             .padding(.bottom, 10.0)
-                        Text("0")
+                        Text(String(cpuScore))
                             .font(.title)
                             .foregroundColor(Color.white)
                     }
@@ -88,7 +166,8 @@ struct ContentView: View {
                 }
                     
                     Button{
-                        print("Button clicked!")
+                        playerScore = playerScore - playerScore
+                        cpuScore = cpuScore - cpuScore
                     } label: {
                         Text("RESTART GAME")
                             .font(.largeTitle)
@@ -100,7 +179,6 @@ struct ContentView: View {
                         // Corner Radius determines how round the corners of an element/view are
                             .cornerRadius(10.0)
                     }
-
                 
             }
         }
